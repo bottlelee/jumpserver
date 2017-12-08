@@ -1,0 +1,15 @@
+FROM python3:mysql-supported
+MAINTAINER Haibin <haibin.li@newtouch.cn>
+
+COPY . /opt/jumpserver
+WORKDIR /opt/jumpserver
+RUN rm -rf data/db.sqlite3 .git config.py
+RUN cp apps/static/js/plugins/dataTables/datatables.min.js apps/static/js/plugins/dataTables/dataTables.min.js
+
+RUN useradd -m haibin && chown -R haibin:haibin /opt/jumpserver
+USER haibin
+
+EXPOSE 8080
+CMD python run_server.py
+
+CMD cd utils && sh make_migrations.sh && sh init_db.sh && cd .. && python run_server.py
