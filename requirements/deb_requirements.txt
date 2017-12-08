@@ -1,1 +1,20 @@
-libtiff4-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
+mysql-client
+libtiff5-dev
+libjpeg62-turbo-dev
+zlib1g-dev
+libfreetype6-dev
+liblcms2-dev
+libwebp-dev
+tcl8.5-dev
+tk8.5-dev
+python-tk
+python-pip
+libmysqlclient-dev
+sshpass
+python-dev
+libffi-dev
+gcc
+libcurl4-openssl-dev
+libkrb5-dev
+libldap2-dev
+libsasl2-dev
