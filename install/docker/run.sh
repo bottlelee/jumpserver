@@ -30,6 +30,11 @@ sed -i "s/__MAIL_USE_SSL__/false/" /jumpserver/jumpserver.conf
 else
 sed -i "s/__MAIL_USE_SSL__/${MAIL_USE_SSL}/" /jumpserver/jumpserver.conf
 fi
+if [ ! -n "${BASE_KEY}" ]; then
+sed -i "s/__BASE_KEY__/941enj9neshd1wes/" /jumpserver/jumpserver.conf
+else
+sed -i "s/__BASE_KEY__/${BASE_KEY}/" /jumpserver/jumpserver.conf
+fi
 if [ ! -f "/etc/ssh/sshd_config" ]; then
 	cp -r /jumpserver/install/docker/sshd_config /etc/ssh/sshd_config
 fi
@@ -57,5 +62,6 @@ if [ ! -f "/home/init.locked" ]; then
 fi
 python /jumpserver/manage.py crontab add >> /data/logs/jumpserver.log &
 python /jumpserver/run_server.py >> /dev/null &
-chmod -R 777 /data/logs/jumpserver.log
+#chmod -R 777 /data/logs/jumpserver.log
+chmod -R 777 /data/logs/
 tail -f /data/logs/jumpserver.log
