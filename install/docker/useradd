@@ -1,2 +1,3 @@
 #!/bin/sh
 adduser $@
+passwd -u $3

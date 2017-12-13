@@ -30,8 +30,7 @@ RUN rm -rf /jumpserver/docs && \
     ln -s /data/ssh /etc/ssh && \
   	ln -s /data/passwd /etc/passwd && \
   	ln -s /data/shadow /etc/shadow && \
-  	chmod -R 777 /jumpserver && \
-    alias ll="ls -lh"
+  	chmod -R 777 /jumpserver
 VOLUME /data
 EXPOSE 80 22
 CMD /run.sh

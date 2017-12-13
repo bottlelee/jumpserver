@@ -66,4 +66,5 @@ chmod -R 777 /data/logs/
 if [ -f "/data/db/db.sqlite3" ]; then
 	chmod 666 /data/db/db.sqlite3
 fi
+alias ll="ls -lh"
 tail -f /data/logs/jumpserver.log
