@@ -10,7 +10,7 @@ services:
     volumes:
       - /etc/timezone:/etc/timezone
       - /etc/localtime:/etc/localtime
-      - ./mysql:/var/lib/mysql
+      - jms_db:/var/lib/mysql
   jumpserver:
     image: jumpserver:prod
     container_name: jumpserver
@@ -41,4 +41,6 @@ services:
 
 volumes:
   jms_data:
+    external: true
+  jms_db:
     external: true
