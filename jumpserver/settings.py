@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'jumpserver.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 DATABASES = {}
-if config.get('db', 'engine') == 'mysql': 
+if config.get('db', 'engine') == 'mysql':
     DB_HOST = config.get('db', 'host')
     DB_PORT = config.getint('db', 'port')
     DB_USER = config.get('db', 'user')
@@ -126,7 +126,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            'NAME': os.path.join(BASE_DIR, 'db/db.sqlite3'),
         }
     }
 TEMPLATE_CONTEXT_PROCESSORS = (

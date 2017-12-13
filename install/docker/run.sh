@@ -52,7 +52,7 @@ if [ ! -f "/etc/ssh/ssh_host_ed25519_key" ]; then
 fi
 
 # handle empty data directory
-mkdir -p /data/logs
+mkdir -p /data/logs /data/db
 
 /usr/sbin/sshd -E /data/logs/jumpserver.log
 python /jumpserver/manage.py syncdb --noinput
@@ -62,6 +62,6 @@ if [ ! -f "/home/init.locked" ]; then
 fi
 python /jumpserver/manage.py crontab add >> /data/logs/jumpserver.log &
 python /jumpserver/run_server.py >> /dev/null &
-#chmod -R 777 /data/logs/jumpserver.log
 chmod -R 777 /data/logs/
+chmod 666 /data/db/db.sqlite3
 tail -f /data/logs/jumpserver.log
