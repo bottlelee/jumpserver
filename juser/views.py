@@ -143,7 +143,7 @@ def user_add(request):
     group_all = UserGroup.objects.all()
 
     if request.method == 'POST':
-        username = request.POST.get('username', '')      
+        username = request.POST.get('username', '')
         password = PyCrypt.gen_rand_pass(16)
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
@@ -160,12 +160,12 @@ def user_add(request):
             if '' in [username, password, ssh_key_pwd, name, role]:
                 error = u'带*内容不能为空'
                 raise ServerError
-                
+
             check_user_is_exist = User.objects.filter(username=username)
             if check_user_is_exist:
                 error = u'用户 %s 已存在' % username
                 raise ServerError
-            
+
             if username in ['root']:
                 error = u'用户不能为root'
                 raise ServerError
@@ -449,7 +449,7 @@ def regen_ssh_key(request):
     username = user.username
     ssh_key_pass = PyCrypt.gen_rand_pass(16)
     gen_ssh_key(username, ssh_key_pass)
-    return HttpResponse('ssh密钥已生成，密码为 %s, 请到下载页面下载' % ssh_key_pass)
+    return HttpResponse('ssh 密钥已生成，密码为 %s, 请到下载页面下载' % ssh_key_pass)
 
 
 @require_role(role='user')
@@ -473,5 +473,4 @@ def down_key(request):
                 if request.user.role == 'CU':
                     os.unlink(private_key_file)
                 return response
-    return HttpResponse('No Key File. Contact Admin.')
-
+    return HttpResponse('密钥文件不存在，请联系管理员。')

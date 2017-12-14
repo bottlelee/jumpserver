@@ -70,7 +70,7 @@
                                     {% if user.username|key_exist %}
                                         <a  href="{% url 'key_down' %}?uuid={{ user.uuid }}" >下载</a>
                                     {% else %}
-                                        <a href="#" onclick="genSSH('{{ user.username }}','{% url 'key_gen' %}?uuid={{ user.uuid }}')">NoKey GenOne?</a>
+                                        <a href="#" onclick="genSSH('{{ user.username }}','{% url 'key_gen' %}?uuid={{ user.uuid }}')" title="警告：如果更新 key，那么原有私钥会失效。">添加/更新</a>
                                     {% endif %}
                                 </td>
                                 <td class="text-center">

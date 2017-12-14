@@ -606,7 +606,7 @@ class Nav(object):
             for asset in assets:
                 print ' %s' % asset.hostname
             print
-            print "请输入主机名或ansible支持的pattern, 多个主机:分隔, q退出"
+            print "请输入主机名或 ansible 支持的 pattern, 多个主机 : 分隔, q 退出"
             pattern = raw_input("\033[1;32mPattern>:\033[0m ").strip()
             if pattern == 'q':
                 break
@@ -700,7 +700,7 @@ class Nav(object):
         while True:
             try:
                 print "进入批量下载模式"
-                print "请输入主机名或ansible支持的pattern, 多个主机:分隔,q退出"
+                print "请输入主机名或 ansible 支持的 pattern, 多个主机 : 分隔, q 退出"
                 pattern = raw_input("\033[1;32mPattern>:\033[0m ").strip()
                 if pattern == 'q':
                     break
@@ -759,7 +759,7 @@ def main():
     主程序
     """
     if not login_user:  # 判断用户是否存在
-        color_print('没有该用户，或许你是以root运行的 No that user.', exits=True)
+        color_print('没有该用户，或许你是以 root 运行的 No that user.', exits=True)
 
     if not login_user.is_active:
         color_print('您的用户已禁用，请联系管理员.', exits=True)

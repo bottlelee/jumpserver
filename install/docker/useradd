@@ -1,3 +1,2 @@
 #!/bin/sh
-adduser $@
-passwd -u $3
+adduser $@ && passwd -u $3
