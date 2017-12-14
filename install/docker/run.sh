@@ -63,8 +63,7 @@ fi
 python /jumpserver/manage.py crontab add >> /data/logs/jumpserver.log &
 python /jumpserver/run_server.py >> /dev/null &
 chmod -R 777 /data/logs/
-if [ -f "/data/db/db.sqlite3" ]; then
-	chmod 666 /data/db/db.sqlite3
+if [ -f "/data/db.sqlite3" ]; then
+	chmod 666 /data/db.sqlite3
 fi
-alias ll="ls -lh"
 tail -f /data/logs/jumpserver.log
