@@ -2,7 +2,7 @@ FROM alpine
 MAINTAINER Haibin <haibin.lee@foxmail.com>
 
 RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories
-RUN apk add --update --no-cache coreutils openssh sshpass python py-mysqldb py-psutil py-crypto && \
+RUN apk add --update --no-cache coreutils openssh sshpass python py-mysqldb py-psutil py-crypto bash nano && \
 	rm -rf /var/cache/apk/*
 COPY ./install/docker/get-pip.py .
 COPY ./install/docker/piprequires.txt .

@@ -33,4 +33,4 @@ RUN rm -rf /jumpserver/docs && \
   	chmod -R 777 /jumpserver
 VOLUME /data
 EXPOSE 80 22
-CMD /run.sh
+ENTRYPOINT /run.sh
