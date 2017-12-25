@@ -32,7 +32,7 @@ start() {
             echo "Sorry, JMS must be run as root"
             exit 1
         fi
-    
+
         jump_start=$"Starting ${PROC_NAME} service:"
         if [ -f $lockfile ];then
              echo -n "jumpserver is running..."
@@ -63,7 +63,7 @@ start() {
 stop() {
     echo -n $"Stopping ${PROC_NAME} service:"
     daemon python $jumpserver_dir/manage.py crontab remove &>> /var/log/jumpserver.log 2>&1
-    ps aux | grep -E 'run_server.py' | grep -v grep | awk '{print $2}' | xargs kill -9 &> /dev/null
+    ps aux | grep -E 'run_server.py' | grep -v grep | awk '{print $1}' | xargs kill -9 &> /dev/null
     ret=$?
     if [ $ret -eq 0 ]; then
         echo_success
