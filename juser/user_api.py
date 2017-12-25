@@ -153,7 +153,8 @@ def server_add_user(username, ssh_key_pwd=''):
     """
     bash("useradd -s '%s' '%s'" % (os.path.join(BASE_DIR, 'init.sh'), username))
     gen_ssh_key(username, ssh_key_pwd)
-
+    bash("passwd -u '%s'" username )
+    
 
 def user_add_mail(user, kwargs):
     """
@@ -199,4 +200,3 @@ def get_display_msg(user, password='', ssh_key_pwd='', send_mail_need=False):
         该账号密码可以登陆web和跳板机。
         """ % (URL, user.username, password, ssh_key_pwd, URL, user.uuid)
     return msg
-
