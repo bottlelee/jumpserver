@@ -10,7 +10,9 @@ sed -i "s/__MYSQL_USER__/${MYSQL_USER}/" /jumpserver/jumpserver.conf
 sed -i "s/__MYSQL_PASS__/${MYSQL_PASS}/" /jumpserver/jumpserver.conf
 sed -i "s/__MYSQL_NAME__/${MYSQL_NAME}/" /jumpserver/jumpserver.conf
 fi
-
+if [[ -n "${URL}" ]]; then
+	sed -i "s/__URL__/${URL}/" /jumpserver/jumpserver.conf
+fi
 if [ ! -n "${USE_MAIL}" ]; then
 sed -i "s/__USE_MAIL__/false/" /jumpserver/jumpserver.conf
 else
