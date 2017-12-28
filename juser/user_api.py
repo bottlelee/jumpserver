@@ -153,8 +153,8 @@ def server_add_user(username, ssh_key_pwd=''):
     """
     bash("useradd -s '%s' '%s'" % (os.path.join(BASE_DIR, 'init.sh'), username))
     gen_ssh_key(username, ssh_key_pwd)
-    bash("passwd -u '%s'" username )
-    
+    bash("passwd -u '%s'" % (username))
+
 
 def user_add_mail(user, kwargs):
     """
