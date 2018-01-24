@@ -26,7 +26,7 @@ services:
       - MYSQL_ENGINE=mysql
       - MYSQL_HOST=mysql
       - MYSQL_PORT=3306
-      - MYSQL_USER=jumpserver
+      - MYSQL_USER=root
       - MYSQL_PASS=love1314
       - MYSQL_NAME=jumpserver
       - USE_MAIL=true

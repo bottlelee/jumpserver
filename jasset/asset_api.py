@@ -287,7 +287,7 @@ def excel_to_db(excel_file):
             row = table.row_values(row_num)
             if row:
                 group_instance = []
-                ip, port, hostname, use_default_auth, username, password, group = row
+                ip, port, hostname, use_default_auth, username, password, group = row, sn, cabinet, position, remote_ip
                 if get_object(Asset, hostname=hostname):
                     continue
                 if isinstance(password, int) or isinstance(password, float):
@@ -300,7 +300,11 @@ def excel_to_db(excel_file):
                                   hostname=hostname,
                                   use_default_auth=use_default_auth,
                                   username=username,
-                                  password=password_encode
+                                  password=password_encode,
+                                  sn=sn,
+                                  cabinet=cabinet,
+                                  position=position,
+                                  remote_ip=remote_ip
                                   )
                     asset.save()
                     group_list = group.split('/')
@@ -400,4 +404,3 @@ def asset_ansible_update_all():
     name = u'定时更新'
     asset_all = Asset.objects.all()
     asset_ansible_update(asset_all, name)
-
