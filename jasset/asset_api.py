@@ -204,8 +204,7 @@ def write_excel(asset_all):
     worksheet.set_column('A:E', 15)
     worksheet.set_column('F:F', 40)
     worksheet.set_column('G:Z', 15)
-    title = [u'主机名', u'IP', u'IDC', u'所属主机组', u'操作系统', u'CPU', u'内存(G)', u'硬盘(G)',
-             u'机柜位置', u'MAC', u'远控IP', u'机器状态', u'备注']
+    title = [u'主机名', u'IP', u'IDC', u'所属主机组', u'操作系统', u'CPU', u'内存(G)', u'硬盘(G)', u'资产编号', u'机柜号', u'机器位置', u'MAC', u'远控IP', u'机器状态', u'备注']
     for asset in asset_all:
         group_list = []
         for p in asset.group.all():
@@ -219,8 +218,7 @@ def write_excel(asset_all):
         system_version = asset.system_version if asset.system_version else u''
         system_os = unicode(system_type) + unicode(system_version)
 
-        alter_dic = [asset.hostname, asset.ip, idc_name, group_all, system_os, asset.cpu, asset.memory,
-                     disk, asset.cabinet, asset.mac, asset.remote_ip, status, asset.comment]
+        alter_dic = [asset.hostname, asset.ip, idc_name, group_all, system_os, asset.cpu, asset.memory, disk, asset.number, asset.cabinet, asset.position, asset.mac, asset.remote_ip, status, asset.comment]
         data.append(alter_dic)
     format = workbook.add_format()
     format.set_border(1)
@@ -287,7 +285,7 @@ def excel_to_db(excel_file):
             row = table.row_values(row_num)
             if row:
                 group_instance = []
-                ip, port, hostname, sn, cabinet, position, remote_ip, use_default_auth, username, password, group = row
+                ip, port, hostname, number, cabinet, position, remote_ip, use_default_auth, username, password, group = row
                 if get_object(Asset, hostname=hostname):
                     continue
                 if isinstance(password, int) or isinstance(password, float):
@@ -301,7 +299,7 @@ def excel_to_db(excel_file):
                                   use_default_auth=use_default_auth,
                                   username=username,
                                   password=password_encode,
-                                  sn=sn,
+                                  number=number,
                                   cabinet=cabinet,
                                   position=position,
                                   remote_ip=remote_ip

@@ -12,7 +12,8 @@ ASSET_ENV = (
 ASSET_STATUS = (
     (1, u"已使用"),
     (2, u"未使用"),
-    (3, u"报废")
+    (3, u"报废"),
+    (4, u"异常")
     )
 
 ASSET_TYPE = (
