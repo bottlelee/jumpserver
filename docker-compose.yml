@@ -12,6 +12,8 @@ services:
       - /etc/localtime:/etc/localtime
       - jms_db:/var/lib/mysql
       - ./install/docker/mysqld_custom.cnf:/etc/mysql/conf.d/custom.cnf
+    ports:
+      - "3306:3306"
   jumpserver:
     image: jumpserver:prod
     container_name: jumpserver

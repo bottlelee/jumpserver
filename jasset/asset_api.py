@@ -287,7 +287,7 @@ def excel_to_db(excel_file):
             row = table.row_values(row_num)
             if row:
                 group_instance = []
-                ip, port, hostname, use_default_auth, username, password, group = row, sn, cabinet, position, remote_ip
+                ip, port, hostname, sn, cabinet, position, remote_ip, use_default_auth, username, password, group = row
                 if get_object(Asset, hostname=hostname):
                     continue
                 if isinstance(password, int) or isinstance(password, float):

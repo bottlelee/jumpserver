@@ -46,7 +46,9 @@
 
                                         <div class="hr-line-dashed"></div>
                                         {{ af.ip|bootstrap_horizontal }}
-                                        <p class="col-sm-offset-2">Tips: 如果IP地址不填写, IP默认会设置与主机名一致</p>
+                                        <p class="col-sm-offset-2">Tips: 如果 IP 地址不填写, IP 默认会设置与主机名一致。</p>
+
+                                        {{ af.remote_ip|bootstrap_horizontal }}
 
                                         <div class="hr-line-dashed"></div>
                                         <div class="form-group">
@@ -59,7 +61,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <p class="col-sm-offset-2">Tips: 管理用户是服务器存在的root或拥有sudo的用户，用来推送系统用户</p>
+                                        <p class="col-sm-offset-2">Tips: 管理用户是服务器存在的 root 或拥有 sudo 的用户，用来推送系统用户</p>
                                         <div class="form-group" id="admin_account" style="display: none">
                                             <label class="col-sm-2 control-label"> <span class="red-fonts"></span> </label>
                                             <div class="col-sm-3">
@@ -83,14 +85,19 @@
                                         <div class="hr-line-dashed"></div>
                                         {{ af.group|bootstrap_horizontal }}
 
+                                        <div class="hr-line-dashed"></div>
+                                        {{ af.number|bootstrap_horizontal }}
+                                        {{ af.cabinet|bootstrap_horizontal }}
+                                        {{ af.position|bootstrap_horizontal }}
+
 {#                                        {{ af.is_active|bootstrap_horizontal }}#}
 
                                         <div class="hr-line-dashed"></div>
-                                        <div class="form-group"><label class="col-sm-2 control-label"> 是否激活<span class="red-fonts"> *</span> </label>
+                                        <div class="form-group"><label class="col-sm-2 control-label">是否激活<span class="red-fonts"> *</span> </label>
                                             <div class="col-sm-8">
                                                 <div class="radio i-checks">
-                                                    <label> <input type="radio" checked="" value="1" name="is_active">激活 </label>
-                                                    <label> <input type="radio" value="0" name="is_active"> 禁用</label>
+                                                    <label> <input type="radio" checked="" value="1" name="is_active">激活</label>
+                                                    <label> <input type="radio" value="0" name="is_active">禁用</label>
                                                 </div>
                                             </div>
                                         </div>

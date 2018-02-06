@@ -45,3 +45,9 @@ jumpserver.conf
 nohup.out
 tmp/*
 mysql/*
+
+# Virtual enviroment
+include
+local
+pip-selfcheck.json
+share
