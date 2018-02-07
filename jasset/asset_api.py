@@ -291,6 +291,7 @@ def excel_to_db(excel_file):
                 if isinstance(password, int) or isinstance(password, float):
                     password = unicode(int(password))
                 use_default_auth = 1 if use_default_auth == u'默认' else 0
+                port = 22 if port == ''
                 password_encode = CRYPTOR.encrypt(password) if password else ''
                 if hostname:
                     asset = Asset(ip=ip,
@@ -323,9 +324,9 @@ def get_ansible_asset_info(asset_ip, setup_info):
         for disk_name, disk_info in disk_all.iteritems():
             if disk_name.startswith('sd') or disk_name.startswith('hd') or disk_name.startswith('vd') or disk_name.startswith('xvd'):
                 disk_size = disk_info.get("size", '')
-                if 'M' in disk_size:
+                if 'MB' in disk_size:
                     disk_format = round(float(disk_size[:-2]) / 1000, 0)
-                elif 'T' in disk_size:
+                elif 'TB' in disk_size:
                     disk_format = round(float(disk_size[:-2]) * 1000, 0)
                 else:
                     disk_format = float(disk_size[:-2])
@@ -373,7 +374,7 @@ def asset_ansible_update(obj_list, name=''):
             setup_info = ansible_asset_info['contacted'][asset.hostname]['ansible_facts']
             logger.debug("setup_info: %s" % setup_info)
         except KeyError, e:
-            logger.error("获取setup_info失败: %s" % e)
+            logger.error("获取 setup_info 失败: %s" % e)
             continue
         else:
             try:
