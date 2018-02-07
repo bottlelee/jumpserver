@@ -291,7 +291,8 @@ def excel_to_db(excel_file):
                 if isinstance(password, int) or isinstance(password, float):
                     password = unicode(int(password))
                 use_default_auth = 1 if use_default_auth == u'默认' else 0
-                port = 22 if port == ''
+                if port == '':
+                    port = '22'
                 password_encode = CRYPTOR.encrypt(password) if password else ''
                 if hostname:
                     asset = Asset(ip=ip,
