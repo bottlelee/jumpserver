@@ -356,8 +356,11 @@ def get_ansible_asset_info(asset_ip, setup_info):
         cpu_cores = setup_info.get("ansible_processor_count")
     else:
         system_version = setup_info.get("ansible_distribution_version")
-        cpu_cores = setup_info.get("ansible_processor_vcpus")
-    cpu = cpu_type + ' * ' + unicode(cpu_cores)
+        cpu_vcpus = setup_info.get("ansible_processor_vcpus")
+        cpu_count = setup_info.get("ansible_processor_count")
+        cpu_cores = setup_info.get("ansible_processor_cores")
+        cpu_threads = setup_info.get("ansible_processor_threads_per_core")
+    cpu = cpu_type + ' * ' + unicode(cpu_vcpus) + ' (' + unicode(cpu_threads) + u'线程*'+ unicode(cpu_cores) + u'核*' + unicode(cpu_count) + u'路' + ')'
     system_arch = setup_info.get("ansible_architecture")
     # asset_type = setup_info.get("ansible_system")
     sn = setup_info.get("ansible_product_serial")
